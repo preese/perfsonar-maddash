@@ -63,10 +63,10 @@
         state: started
 
     - name: FirewallD rules
-      firewalld:
+      ansible.posix.firewalld
+        service: "{{ item }}"
         permanent: yes
         immediate: yes
-        ansible.builtin.systemd: "{{ item }}"
         state: enabled
       with_items:
        - http
